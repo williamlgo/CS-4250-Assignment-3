@@ -92,3 +92,10 @@ def getIndex(col):
     # ...
     # --> add your Python code here
     index = ''
+    #look through all of the terms list and store as a list with the format Category:count
+
+    #First make the query 
+    distinctTerms = distinct('terms.terms')
+
+    #Iterate through the list of terms 
+    
