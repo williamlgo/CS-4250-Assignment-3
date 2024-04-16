@@ -35,15 +35,25 @@ def createDocument(col, docId, docText, docTitle, docDate, docCat):
     # Use space " " as the delimiter character for terms and remember to lowercase them.
     # --> add your Python code here
     #This would use docText to count how many times each term appears and add it into the dictionary
+    termList = docText.split()
+    termDict = {}
+    for newTerm in termList:
+        for term,count in termDict.items():
+            if newTerm == term:
+                termDict.update({term: count+1})
+            else:
+                termDict[newTerm] = 1
 
     # create a list of objects to include full term objects. [{"term", count, num_char}]
     # --> add your Python code here
     #This would be added into the list that describes the embedded term 
-    terms = []
+    terms = [] 
+    for term,count in termDict.items():
+        termSet = {term, count, len(term)}
+        terms.append(termSet)
 
     # produce a final document as a dictionary including all the required document fields
     # --> add your Python code here
-
     collection = {
         "_id": docId,
         "text": docText,
